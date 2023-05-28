@@ -2,21 +2,42 @@
 
 ##### Spring cloud configuration server URLs:
 
-http://localhost:8888/db-credentials
+    http://localhost:8888/db-credentials
 
-http://localhost:8888/limits-service/qa
+    http://localhost:8888/limits-service/qa
 
 
 ##### Eureka URLs:
 
-http://localhost:8761
+    http://localhost:8761
 
 ##### Currency-exchange URLs
 
-http://localhost:8000/currency-exchange/from/USD/to/INR
+    http://localhost:8000/currency-exchange/from/USD/to/INR
 
 
-##### Currency CPnversion URLs
+##### Currency Conversion URLs
 
-http://localhost:8100/currency-conversion-feign/from/USD/to/INR/quantity/20
+    http://localhost:8100/currency-conversion-feign/from/USD/to/INR/quantity/20
+
+##### Api-Gateway URLs
+http://localhost:8765/<name of service from Eureka>/<service URL exposed>
+
+    http://localhost:8765/CURRENCY-EXCHANGE-SERVICE/currency-exchange/from/USD/to/INR
+    http://localhost:8765/CURRENCY-CONVERSION-SERVICE/currency-conversion-feign/from/USD/to/INR/quantity/20
+    http://localhost:8765/CURRENCY-CONVERSION-SERVICE/currency-conversion/from/USD/to/INR/quantity/20
+
+
+After adding property: spring.cloud.gateway.discovery.locator.lower-case-service-id=true everything can be lower caps
+
+    http://localhost:8765/currency-exchange-service/currency-exchange/from/USD/to/INR
+    http://localhost:8765/currency-conversion-service/currency-conversion-feign/from/USD/to/INR/quantity/20
+    http://localhost:8765/currency-conversion-service/currency-conversion/from/USD/to/INR/quantity/20
+    
+ After adding filters and removing properties **spring.cloud.gateway.discovery.locator.lower-case-service-id=true**  and **spring.cloud.gateway.discovery.locator.enabled=true**
+ 
+    http://localhost:8765/currency-exchange/from/USD/to/INR
+    http://localhost:8765/currency-conversion-feign/from/USD/to/INR/quantity/20
+    http://localhost:8765/currency-conversion/from/USD/to/INR/quantity/20
+    
 

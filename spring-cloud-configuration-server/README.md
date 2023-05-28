@@ -1,2 +1,0 @@
-# SpringCloudConfigServer101
-MicroServices config management with SpringCloudConfigServer

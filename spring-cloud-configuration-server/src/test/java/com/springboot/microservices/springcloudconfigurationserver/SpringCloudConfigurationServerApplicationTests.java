@@ -1,10 +1,10 @@
-package com.springboot.microservices.springcloudconfigserver;
+package com.springboot.microservices.springcloudconfigurationserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringCloudConfigServerApplicationTests {
+class SpringCloudConfigurationServerApplicationTests {
 
 	@Test
 	void contextLoads() {

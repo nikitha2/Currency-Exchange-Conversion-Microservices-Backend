@@ -39,5 +39,6 @@ After adding property: spring.cloud.gateway.discovery.locator.lower-case-service
     http://localhost:8765/currency-exchange/from/USD/to/INR
     http://localhost:8765/currency-conversion-feign/from/USD/to/INR/quantity/20
     http://localhost:8765/currency-conversion/from/USD/to/INR/quantity/20
+    http://localhost:8765/currency-conversion-new/from/USD/to/INR/quantity/20 -> rename url for-> http://localhost:8765/currency-conversion/from/USD/to/INR/quantity/20
     
 

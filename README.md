@@ -41,4 +41,13 @@ After adding property: spring.cloud.gateway.discovery.locator.lower-case-service
     http://localhost:8765/currency-conversion/from/USD/to/INR/quantity/20
     http://localhost:8765/currency-conversion-new/from/USD/to/INR/quantity/20 -> rename url for-> http://localhost:8765/currency-conversion/from/USD/to/INR/quantity/20
     
+###### Spring cloud Gateway: 
+    Efficient way to route to APIs
+    Provide cost cutting concerns: Security, monitoring/Metrics are some examples on what can be implemented in gateway. 
+    Functions common to all services are implemented  here.
 
+###### Features:
+     Match routes on any request attribute
+     Define Predicates and Filters
+     Integrates with spring cloud discovery client (Load Balancing)
+     Path Rewriting

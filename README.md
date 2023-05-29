@@ -1,27 +1,27 @@
 # Currency-Exchange-Conversion-Microservices-Backend
 
-##### Spring cloud configuration server URLs:
+#### Spring cloud configuration server URLs:
 
     http://localhost:8888/db-credentials
 
     http://localhost:8888/limits-service/qa
 
 
-##### Eureka URLs:
+#### Eureka URLs:
 
     http://localhost:8761
 
-##### Currency-exchange URLs
+#### Currency-exchange URLs
 
     http://localhost:8000/currency-exchange/from/USD/to/INR
 
 
-##### Currency Conversion URLs
+#### Currency Conversion URLs
 
     http://localhost:8100/currency-conversion-feign/from/USD/to/INR/quantity/20
 
-##### Api-Gateway URLs
-http://localhost:8765/<name of service from Eureka>/<service URL exposed>
+#### Api-Gateway 
+##### URLs: http://localhost:8765/<name of service from Eureka>/<service URL exposed>
 
     http://localhost:8765/CURRENCY-EXCHANGE-SERVICE/currency-exchange/from/USD/to/INR
     http://localhost:8765/CURRENCY-CONVERSION-SERVICE/currency-conversion-feign/from/USD/to/INR/quantity/20
@@ -41,12 +41,20 @@ After adding property: spring.cloud.gateway.discovery.locator.lower-case-service
     http://localhost:8765/currency-conversion/from/USD/to/INR/quantity/20
     http://localhost:8765/currency-conversion-new/from/USD/to/INR/quantity/20 -> rename url for-> http://localhost:8765/currency-conversion/from/USD/to/INR/quantity/20
     
+<<<<<<< Upstream, based on branch 'master' of https://github.com/nikitha2/Currency-Exchange-Conversion-Microservices-Backend.git
 ###### Spring cloud Gateway: 
+=======
+##### Spring cloud Gateway: 
+>>>>>>> a2474db readMe
     Efficient way to route to APIs
     Provide cost cutting concerns: Security, monitoring/Metrics are some examples on what can be implemented in gateway. 
     Functions common to all services are implemented  here.
 
+<<<<<<< Upstream, based on branch 'master' of https://github.com/nikitha2/Currency-Exchange-Conversion-Microservices-Backend.git
 ###### Features:
+=======
+##### Features:
+>>>>>>> a2474db readMe
      Match routes on any request attribute
      Define Predicates and Filters
      Integrates with spring cloud discovery client (Load Balancing)

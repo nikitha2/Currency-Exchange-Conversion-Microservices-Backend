@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ApiGatewayConfiguration {
-
 	
 	@Bean
 	public RouteLocator gatewayRouter(RouteLocatorBuilder builder) {
@@ -38,6 +37,5 @@ public class ApiGatewayConfiguration {
 						.filters(f-> f.rewritePath("/currency-conversion-new/(?<segement>.*)", "/currency-conversion/${segement}"))
 						.uri("lb://CURRENCY-CONVERSION-SERVICE"))
 				.build();
-		
 	}
 }

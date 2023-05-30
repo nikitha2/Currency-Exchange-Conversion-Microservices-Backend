@@ -6,9 +6,7 @@ import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
-
 import reactor.core.publisher.Mono;
-
 
 /**
  * Filter to log every request that goes through api-gateway
@@ -23,8 +21,8 @@ public class LoggingFilter implements GlobalFilter {
 	@Override
 	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 	
-		logger.info("Path of the request requested -> {}", exchange.getRequest().getPath());
+		logger.info("Path of the request requested -> {}", 
+				exchange.getRequest().getPath());
 		return chain.filter(exchange);
 	}
-
 }

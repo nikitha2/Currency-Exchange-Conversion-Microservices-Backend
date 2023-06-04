@@ -2,12 +2,11 @@ package com.springboot.microservices.currencyexchangeservice.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
 
 @RestController
@@ -23,7 +22,9 @@ public class CircuitBreakerController {
 	@GetMapping("currency-exchange/sample-api")
 	// default will try the call 3times if it fails.
 	//@Retry(name = "default", fallbackMethod = "hardcodedResponse") 
-	@Retry(name = "retry5Times", fallbackMethod = "hardcodedResponse") 
+//	@Retry(name = "retry5Times", fallbackMethod = "hardcodedResponse") 
+	@CircuitBreaker(name = "default", fallbackMethod = "hardcodedResponse") 
+
 	public String sampleApi() {
 		logger.info("---- SampleApi call recieved");
 

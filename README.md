@@ -1,26 +1,26 @@
 # Currency-Exchange-Conversion-Microservices-Backend
 
-#### Spring cloud configuration server URLs:
+#### Spring cloud configuration server URLs: [Configuration Server]
 
     http://localhost:8888/db-credentials
 
     http://localhost:8888/limits-service/qa
 
 
-#### Eureka URLs:
+#### Eureka URLs:  [Naming server]
 
     http://localhost:8761
 
-#### Currency-exchange URLs
+#### Currency-exchange URLs [MicroService]
 
     http://localhost:8000/currency-exchange/from/USD/to/INR
 
 
-#### Currency Conversion URLs
+#### Currency Conversion URLs [MicroService]
 
     http://localhost:8100/currency-conversion-feign/from/USD/to/INR/quantity/20
 
-#### Api-Gateway 
+#### Api-Gateway  [Gateway]
 
 ##### URLs: http://localhost:8765/<name of service from Eureka>/<service URL exposed>
 
@@ -52,3 +52,6 @@ After adding property: spring.cloud.gateway.discovery.locator.lower-case-service
      Define Predicates and Filters
      Integrates with spring cloud discovery client (Load Balancing)
      Path Rewriting
+     
+#### Zipkinhttp://localhost:9411/zipkin/  [Distributed tracing server]
+     http://localhost:9411/zipkin/

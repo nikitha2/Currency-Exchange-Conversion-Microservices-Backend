@@ -3,7 +3,6 @@ package com.springboot.microservices.currencyconversionservice.dao;
 import java.math.BigDecimal;
 import java.nio.charset.Charset;
 import java.util.HashMap;
-
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -12,7 +11,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-
 import com.springboot.microservices.currencyconversionservice.configuration.DbConfiguration;
 import com.springboot.microservices.currencyconversionservice.feignproxy.CustomerExchangeProxy;
 import com.springboot.microservices.currencyconversionservice.model.CurrencyConversionEntity;
@@ -22,6 +20,9 @@ public class CurrencyConversionControllerDaoService {
 
 	@Autowired
 	DbConfiguration dbConfiguration;
+	
+	@Autowired
+    private RestTemplate restTemplate;
 	
 	@Autowired
 	CustomerExchangeProxy customerExchangeProxy;
@@ -46,7 +47,9 @@ public class CurrencyConversionControllerDaoService {
 		uriVariable.put("toCurrency", toCurrency);
 
 		String uri = "http://localhost:8000/currency-exchange/from/{fromCurrency}/to/{toCurrency}";
-		ResponseEntity<CurrencyConversionEntity> responseEntity = new RestTemplate().exchange(uri, HttpMethod.GET,
+		
+		//If don't need restTemplate calls to shown on zipkin, simply use new RestTemplate().exchange(...);
+		ResponseEntity<CurrencyConversionEntity> responseEntity = restTemplate.exchange(uri, HttpMethod.GET,
 				new HttpEntity<Object>(createHeaders(dbConfiguration.getUsername(), dbConfiguration.getPassword())),
 				CurrencyConversionEntity.class, uriVariable);
 
@@ -62,6 +65,8 @@ public class CurrencyConversionControllerDaoService {
 				responseEntityBody.getTo(), responseEntityBody.getConversionMultiple(), quantity,
 				quantity.multiply(responseEntityBody.getConversionMultiple()), responseEntityBody.getEnvironment());
 	}
+	
+	
 	
 	public CurrencyConversionEntity findByFromAndToAndQuantityWithFeign(String fromCurrency, String toCurrency,
 			BigDecimal quantity) {

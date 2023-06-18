@@ -40,7 +40,7 @@ public class CurrencyExchangeController {
 	@GetMapping("/currency-exchange/db-credentials")
 	public DbConfigurationModal findDbCredentials(){
 		logger.info("/currency-exchange/db-credentials call made");
-		return new DbConfigurationModal(dbConfiguration.getUsername(),dbConfiguration.getPassword());
+		return new DbConfigurationModal(dbConfiguration.getDbUsername(),dbConfiguration.getDbPassword());
 	}
 
 }

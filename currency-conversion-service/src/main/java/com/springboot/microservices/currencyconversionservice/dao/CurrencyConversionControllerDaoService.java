@@ -50,7 +50,7 @@ public class CurrencyConversionControllerDaoService {
 		
 		//If don't need restTemplate calls to shown on zipkin, simply use new RestTemplate().exchange(...);
 		ResponseEntity<CurrencyConversionEntity> responseEntity = restTemplate.exchange(uri, HttpMethod.GET,
-				new HttpEntity<Object>(createHeaders(dbConfiguration.getUsername(), dbConfiguration.getPassword())),
+				new HttpEntity<Object>(createHeaders(dbConfiguration.getDbUsername(), dbConfiguration.getDbPassword())),
 				CurrencyConversionEntity.class, uriVariable);
 
 		// Can be used if no authentication needed. In other words, if spring-security is not used

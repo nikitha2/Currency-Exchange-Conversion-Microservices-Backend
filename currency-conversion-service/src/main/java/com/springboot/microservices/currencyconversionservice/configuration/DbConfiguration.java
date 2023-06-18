@@ -6,19 +6,19 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties("db-credentials")
 public class DbConfiguration {
-	private String username;
-	private String password;
+	private String db_username;
+	private String db_password;
 	
-	public String getUsername() {
-		return username;
+	public String getDbUsername() {
+		return db_username;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setDbUsername(String username) {
+		this.db_username = username;
 	}
-	public String getPassword() {
-		return password;
+	public String getDbPassword() {
+		return db_password;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setDbPassword(String password) {
+		this.db_password = password;
 	}
 }

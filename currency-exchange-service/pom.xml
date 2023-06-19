@@ -139,7 +139,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<image>
-						<name>nikithagullapalli/mmv3-${project.artifactId}:${project.version}-1</name>
+						<name>nikithagullapalli/mmv3-${project.artifactId}:${project.version}</name>
 					</image>
 					<pullPolicy>IF_NOT_PRESENT</pullPolicy>
 				</configuration>

@@ -57,4 +57,7 @@ After adding property: spring.cloud.gateway.discovery.locator.lower-case-service
      http://localhost:9411/zipkin/
      
 #### DockerHub images:
-     https://hub.docker.com/u/nikithagullapalli     
+     https://hub.docker.com/u/nikithagullapalli    
+     
+#### How to use MySql DB instead of h2 DB
+     https://carvana.udemy.com/course/microservices-with-spring-boot-and-spring-cloud/learn/lecture/33578646#overview      

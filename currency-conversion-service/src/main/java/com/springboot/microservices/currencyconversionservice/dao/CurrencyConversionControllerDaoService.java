@@ -3,7 +3,7 @@ package com.springboot.microservices.currencyconversionservice.dao;
 import java.math.BigDecimal;
 import java.nio.charset.Charset;
 import java.util.HashMap;
-import org.apache.commons.codec.binary.Base64;
+//import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -27,17 +27,17 @@ public class CurrencyConversionControllerDaoService {
 	@Autowired
 	CustomerExchangeProxy customerExchangeProxy;
 
-	HttpHeaders createHeaders(String username, String password) {
-		return new HttpHeaders() {
-			private static final long serialVersionUID = 1L;
-			{
-				String auth = username + ":" + password;
-				byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
-				String authHeader = "Basic " + new String(encodedAuth);
-				set("Authorization", authHeader);
-			}
-		};
-	}
+//	HttpHeaders createHeaders(String username, String password) {
+//		return new HttpHeaders() {
+//			private static final long serialVersionUID = 1L;
+//			{
+//				String auth = username + ":" + password;
+//				byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
+//				String authHeader = "Basic " + new String(encodedAuth);
+//				set("Authorization", authHeader);
+//			}
+//		};
+//	}
 	
 	public CurrencyConversionEntity findByFromAndToAndQuantityWithRestTemplate(String fromCurrency, String toCurrency,
 			BigDecimal quantity) {
@@ -49,16 +49,16 @@ public class CurrencyConversionControllerDaoService {
 		String uri = "http://localhost:8000/currency-exchange/from/{fromCurrency}/to/{toCurrency}";
 		
 		//If don't need restTemplate calls to shown on zipkin, simply use new RestTemplate().exchange(...);
-		ResponseEntity<CurrencyConversionEntity> responseEntity = restTemplate.exchange(uri, HttpMethod.GET,
-				new HttpEntity<Object>(createHeaders(dbConfiguration.getDbUsername(), dbConfiguration.getDbPassword())),
-				CurrencyConversionEntity.class, uriVariable);
+//		ResponseEntity<CurrencyConversionEntity> responseEntity = restTemplate.exchange(uri, HttpMethod.GET,
+//				new HttpEntity<Object>(createHeaders(dbConfiguration.getDbUsername(), dbConfiguration.getDbPassword())),
+//				CurrencyConversionEntity.class, uriVariable);
 
 		// Can be used if no authentication needed. In other words, if spring-security is not used
-        /** ResponseEntity<CurrencyConversionEntity> responseEntity = new RestTemplate().getForEntity(
+         ResponseEntity<CurrencyConversionEntity> responseEntity = new RestTemplate().getForEntity(
 				"http://localhost:8000/currency-exchange/from/{fromCurrency}/to/{toCurrency}", 
 				CurrencyConversionEntity.class,
 				uriVariable); 
-		**/
+		
 
 		CurrencyConversionEntity responseEntityBody = responseEntity.getBody();
 		return new CurrencyConversionEntity(responseEntityBody.getId(), responseEntityBody.getFrom(),

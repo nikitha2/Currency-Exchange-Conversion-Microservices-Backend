@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.springboot.microservices.currencyconversionservice.model.CurrencyConversionEntity;
 
 @Component
-@FeignClient(name = "currency-exchange-service", configuration = FeignClientConfiguration.class)
+@FeignClient(name = "currency-exchange-service",
+			 url = "${CURRENCY_EXCHANGE_SERVICE_HOST:http://localhost}:8000", // Will search for CURRENCY_EXCHANGE_SERVICE_HOST in env variables. If not found will use http:localhost..
+			 configuration = FeignClientConfiguration.class)
 public interface CustomerExchangeProxy {
 	
 

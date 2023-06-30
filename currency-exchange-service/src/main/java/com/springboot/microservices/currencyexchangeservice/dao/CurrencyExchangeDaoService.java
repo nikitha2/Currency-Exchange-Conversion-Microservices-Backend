@@ -18,8 +18,16 @@ public class CurrencyExchangeDaoService {
 	
 	public CurrencyExchangeEntity findByFromCurrencyAndToCurrency(String fromCurrency, String toCurrency){
 		CurrencyExchangeEntity currencyExchangeEntity = currencyExchangeRepository.findByFromCurrencyAndToCurrency(fromCurrency, toCurrency);
-        currencyExchangeEntity.setEnvironment(environment.getProperty("local.server.port"));
 		
+		String port= environment.getProperty("local.server.port");
+		String host= environment.getProperty("HOSTNAME");
+		String version= getClass().getPackage().getImplementationVersion();
+		String version1= "v11";
+
+
+        currencyExchangeEntity.setEnvironment(port+" "+version+"/"+version1+" "+host);
+		
+        
 		return currencyExchangeEntity;
 		
 	}

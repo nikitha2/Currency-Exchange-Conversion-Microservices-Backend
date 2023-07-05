@@ -22,7 +22,7 @@ public class CurrencyExchangeDaoService {
 		String port= environment.getProperty("local.server.port");
 		String host= environment.getProperty("HOSTNAME");
 		String version= getClass().getPackage().getImplementationVersion();
-		String version1= "v11";
+		String version1= "v12";
 
 
         currencyExchangeEntity.setEnvironment(port+" "+version+"/"+version1+" "+host);

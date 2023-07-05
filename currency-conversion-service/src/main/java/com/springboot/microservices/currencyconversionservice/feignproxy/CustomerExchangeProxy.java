@@ -9,7 +9,9 @@ import com.springboot.microservices.currencyconversionservice.model.CurrencyConv
 
 @Component
 @FeignClient(name = "currency-exchange-service",
-			 url = "${CURRENCY_EXCHANGE_SERVICE_HOST:http://localhost}:8000", // Will search for CURRENCY_EXCHANGE_SERVICE_HOST in env variables. If not found will use http:localhost..
+//			 url = "${CURRENCY_EXCHANGE_SERVICE_HOST:http://localhost}:8000", // Will search for CURRENCY_EXCHANGE_SERVICE_HOST in env variables. If not found will use http:localhost..
+             url = "${CURRENCY_EXCHANGE_URI:http://localhost}:8000", // Custom environment variable. Defined in Kubernetes. (deployment.yaml file)
+
 			 configuration = FeignClientConfiguration.class)
 public interface CustomerExchangeProxy {
 	

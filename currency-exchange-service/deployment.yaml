@@ -25,9 +25,17 @@ spec:
         app: currency-exchange
     spec:
       containers:
-      - image: nikithagullapalli/mmv3-currency-exchange-service-kubernetes:0.0.11-SNAPSHOT
+      - image: nikithagullapalli/mmv3-currency-exchange-service-kubernetes:0.0.12-SNAPSHOT
         imagePullPolicy: IfNotPresent
         name: mmv3-currency-exchange-service-kubernetes
+        readinessProbe:
+          httpGet:
+            port: 8000
+            path: /actuator/health/readiness
+        livenessProbe:
+          httpGet:
+            port: 8000
+            path: /actuator/health/liveness
       restartPolicy: Always
         
 ---

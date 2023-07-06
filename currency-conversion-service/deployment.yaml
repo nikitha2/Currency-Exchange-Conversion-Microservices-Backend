@@ -28,9 +28,20 @@ spec:
       - image: nikithagullapalli/mmv3-currency-conversion-service-kubernetes:0.0.12-SNAPSHOT
         imagePullPolicy: IfNotPresent
         name: mmv3-currency-conversion-service-kubernetes
-        env:
-          - name: CURRENCY_EXCHANGE_URI
-            value: http://currency-exchange
+        readinessProbe:
+          httpGet:
+            port: 8100
+            path: /actuator/health/readiness
+        livenessProbe:
+          httpGet:
+            port: 8100
+            path: /actuator/health/liveness
+        envFrom:
+          - configMapRef:
+              name: currrency-converstion
+#        env:
+#          - name: CURRENCY_EXCHANGE_URI
+#            value: http://currency-exchange
       restartPolicy: Always
         
 ---
@@ -53,3 +64,14 @@ spec:
   sessionAffinity: None
   type: LoadBalancer
 
+---
+
+#configmap
+apiVersion: v1
+data:
+  CURRENCY_EXCHANGE_URI: http://currency-exchange
+kind: ConfigMap
+metadata:
+  name: currrency-converstion
+  namespace: default
+ 

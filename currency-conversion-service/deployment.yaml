@@ -30,7 +30,7 @@ spec:
         name: mmv3-currency-conversion-service-kubernetes
         env:
           - name: CURRENCY_EXCHANGE_URI
-            value: https://currency-exchange
+            value: http://currency-exchange
       restartPolicy: Always
         
 ---
